@@ -1,0 +1,10 @@
+Go to settings in phone
+
+find about phone
+
+Press Version number until it ask for pincode
+
+Now Connect phone to pc through charge cable
+
+now you should be able to use your phone in visual studio
+:)
