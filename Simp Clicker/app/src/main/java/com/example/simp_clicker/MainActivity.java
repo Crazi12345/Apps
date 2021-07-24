@@ -1,7 +1,11 @@
 package com.example.simp_clicker;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 
+import com.example.simp_clicker.databinding.FragmentHomeBinding;
+import com.example.simp_clicker.ui.Points;
+import com.example.simp_clicker.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.simp_clicker.databinding.ActivityMainBinding;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,10 +26,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Timer timer;
+        Timer timer= new Timer();
+        Integer num = 0;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                UpdateText();
+
+            }
+        },0,10);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -43,5 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+void UpdateText(){
+    this.runOnUiThread(new Runnable() {
+        public void run() {
+            getSupportActionBar().setTitle(Points.numOfPoints.toString());
+        }
+    });
+}
 }

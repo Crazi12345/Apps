@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentHomeBinding;
+import com.example.simp_clicker.ui.Points;
 
 public class HomeFragment extends Fragment {
 
@@ -27,7 +29,13 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        ImageButton MainButton = (ImageButton)root.findViewById(R.id.MainButton);
+        MainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Points.numOfPoints++;
+            }
+        });
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
