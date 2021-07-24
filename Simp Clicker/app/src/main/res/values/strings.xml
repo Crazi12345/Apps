@@ -1,6 +1,7 @@
 <resources>
+
     <string name="app_name">Simp_Clicker</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">HOME</string>
+    <string name="title_dashboard">Shop</string>
+    <string name="title_notifications">Settings</string>
 </resources>
