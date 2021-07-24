@@ -13,6 +13,9 @@ public class Workstation {
         this.amount +=numberAdded;
     }
 
+    public int getTotalPps(){
+        return amount*pps;
+    }
 
     // the private variables:
     private String name;
