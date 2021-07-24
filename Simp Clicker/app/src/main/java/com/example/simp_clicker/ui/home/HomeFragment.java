@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentHomeBinding;
-import com.example.simp_clicker.ui.Points;
+import com.example.simp_clicker.ui.Data;
 
 public class HomeFragment extends Fragment {
 
@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
         MainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Points.numOfPoints++;
+                Data.numOfPoints++;
             }
         });
         final TextView textView = binding.textHome;

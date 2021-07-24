@@ -6,7 +6,11 @@ public class Workstation {
         name = a;
         cost = b;
         pps = c;
-        amount =d;
+        amount = d;
+    }
+
+    public void addAmount(int numberAdded){
+        this.amount +=numberAdded;
     }
 
 

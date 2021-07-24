@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,22 +15,33 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentDashboardBinding;
+import com.example.simp_clicker.ui.Workstation;
 
-public class DashboardFragment extends Fragment {
+import java.util.Timer;
 
-    private DashboardViewModel dashboardViewModel;
+public class ShopFragment extends Fragment {
+
+    private ShopViewModel shopViewModel;
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        shopViewModel =
+                new ViewModelProvider(this).get(ShopViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        Timer shopTimer = new Timer();
+        Workstation Work1 = new Workstation("Twitch Account",50,1,0);
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        Button Work1But = (Button)root.findViewById(R.id.TwatchAccount);
+        Work1But.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Work1.addAmount(1);
+            }
+        });
+        shopViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText("s");

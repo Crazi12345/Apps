@@ -1,11 +1,9 @@
 package com.example.simp_clicker;
 
 import android.os.Bundle;
-import android.widget.ImageButton;
 
-import com.example.simp_clicker.databinding.FragmentHomeBinding;
-import com.example.simp_clicker.ui.Points;
-import com.example.simp_clicker.ui.home.HomeFragment;
+import com.example.simp_clicker.ui.Data;
+import com.example.simp_clicker.ui.Workstation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timer timer= new Timer();
-        Integer num = 0;
+
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 UpdateText();
 
             }
-        },0,10);
+        },0,1);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 void UpdateText(){
     this.runOnUiThread(new Runnable() {
         public void run() {
-            getSupportActionBar().setTitle(Points.numOfPoints.toString());
+            getSupportActionBar().setTitle(Data.numOfPoints.toString());
         }
     });
 }

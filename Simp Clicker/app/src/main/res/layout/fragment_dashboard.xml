@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.dashboard.ShopFragment">
 
     <TextView
         android:id="@+id/text_dashboard"
@@ -19,5 +19,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/TwatchAccount"
+        android:layout_width="274dp"
+        android:layout_height="103dp"
+        android:text="Twatch Account"
+
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="46dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
