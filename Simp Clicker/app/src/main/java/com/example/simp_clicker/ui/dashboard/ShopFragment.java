@@ -15,9 +15,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentDashboardBinding;
+import com.example.simp_clicker.ui.Data;
 import com.example.simp_clicker.ui.Workstation;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class ShopFragment extends Fragment {
 
@@ -31,22 +33,19 @@ public class ShopFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Timer shopTimer = new Timer();
-        Workstation Work1 = new Workstation("Twitch Account",50,1,0);
-        final TextView textView = binding.textDashboard;
+
+
+
+        // Workstations Buttons put them below here:
         Button Work1But = (Button)root.findViewById(R.id.TwatchAccount);
         Work1But.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Work1.addAmount(1);
+               Data.Work1.addAmount(1);
             }
         });
-        shopViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText("s");
-            }
-        });
+
+
         return root;
     }
 
