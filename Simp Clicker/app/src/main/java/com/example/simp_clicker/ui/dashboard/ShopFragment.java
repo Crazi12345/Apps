@@ -38,10 +38,17 @@ public class ShopFragment extends Fragment {
 
         // Workstations Buttons put them below here:
         Button Work1But = (Button)root.findViewById(R.id.TwatchAccount);
+        Work1But.setText("Twatch Account Cost: "+Data.Work1.getCost());
         Work1But.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Data.Work1.addAmount(1);
+                if(Data.numOfPoints>=Data.Work1.getCost()) {
+                    Data.Work1.addAmount(1);
+                    Data.numOfPoints -=Data.Work1.getCost();
+                    Data.Work1.setCost();
+                    Work1But.setText("Twatch Account Cost: "+Data.Work1.getCost());
+                }
+
             }
         });
 

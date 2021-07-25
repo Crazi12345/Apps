@@ -24,9 +24,17 @@
         android:id="@+id/TwatchAccount"
         android:layout_width="274dp"
         android:layout_height="103dp"
-        android:text="Twatch Account"
+        android:layout_marginStart="68dp"
 
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="46dp" />
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        android:layout_marginBottom="207dp"
+        android:text="Twatch Account"
+        app:layout_constraintBottom_toTopOf="@+id/text_dashboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

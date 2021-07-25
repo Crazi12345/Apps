@@ -17,6 +17,17 @@ public class Workstation {
         return amount*pps;
     }
 
+    public int getCost(){
+        return cost;
+    }
+    public void setCost(){
+        this.cost = ((cost*10)+cost*2)/10;
+    }
+
+
+
+
+
     // the private variables:
     private String name;
     private int cost;
