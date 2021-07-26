@@ -5,21 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentDashboardBinding;
 import com.example.simp_clicker.ui.Data;
-import com.example.simp_clicker.ui.Workstation;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ShopFragment extends Fragment {
 
@@ -37,16 +30,17 @@ public class ShopFragment extends Fragment {
 
 
         // Workstations Buttons put them below here:
-        Button Work1But = (Button)root.findViewById(R.id.TwatchAccount);
-        Work1But.setText("Twatch Account Cost: "+Data.Work1.getCost());
+        Button Work1But = (Button)root.findViewById(R.id.Work1_id);
+        Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
         Work1But.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work1.getCost()) {
+                if(Data.numOfPoints>=Data.Work1.getCost())  // Check if there are enough points
+                {
                     Data.Work1.addAmount(1);
-                    Data.numOfPoints -=Data.Work1.getCost();
-                    Data.Work1.setCost();
-                    Work1But.setText("Twatch Account Cost: "+Data.Work1.getCost());
+                    Data.numOfPoints -=Data.Work1.getCost();  // Removes the points used from the total
+                    Data.Work1.setCost();                     // Adds 20% to the cost
+                    Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
                 }
 
             }

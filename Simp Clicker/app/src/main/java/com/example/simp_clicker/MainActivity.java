@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Timer timer= new Timer();
+        Data.addStationToList();
         //UI Update timer
         timer.schedule(new TimerTask() {
             @Override
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 void UpdateText(){
     this.runOnUiThread(new Runnable() {
         public void run() {
-            getSupportActionBar().setTitle(Data.numOfPoints.toString());
+            getSupportActionBar().setTitle(Data.numOfPoints.toString()+" SP");
+            getSupportActionBar().setSubtitle(Data.getTotalWorkPps().toString()+" SP per second");
         }
     });
 }

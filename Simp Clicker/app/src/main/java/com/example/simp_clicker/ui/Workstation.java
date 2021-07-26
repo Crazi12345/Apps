@@ -8,6 +8,9 @@ public class Workstation {
         pps = c;
         amount = d;
     }
+    public String getName(){
+        return name;
+    }
 
     public void addAmount(int numberAdded){
         this.amount +=numberAdded;
