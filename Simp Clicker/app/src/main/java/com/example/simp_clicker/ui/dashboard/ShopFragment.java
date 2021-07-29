@@ -1,5 +1,6 @@
 package com.example.simp_clicker.ui.dashboard;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ public class ShopFragment extends Fragment {
     private ShopViewModel shopViewModel;
     private FragmentDashboardBinding binding;
 
+    @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         shopViewModel =
@@ -33,6 +35,7 @@ public class ShopFragment extends Fragment {
         Button Work1But = (Button)root.findViewById(R.id.Work1_id);
         Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
         Work1But.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(Data.numOfPoints>=Data.Work1.getCost())  // Check if there are enough points
@@ -41,6 +44,8 @@ public class ShopFragment extends Fragment {
                     Data.numOfPoints -=Data.Work1.getCost();  // Removes the points used from the total
                     Data.Work1.setCost();                     // Adds 20% to the cost
                     Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
+                    // Would it be smart to, instead of using set cost, just calculate the cost based on how many workstations of that type have already been purchased?
+                    // This way if there are other ways of acquiring workstations or if we want to add multipliers to cost later it would be much easier
                 }
 
             }
