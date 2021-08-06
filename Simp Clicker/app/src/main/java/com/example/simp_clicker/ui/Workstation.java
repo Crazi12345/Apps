@@ -7,6 +7,7 @@ public class Workstation {
         cost = b;
         pps = c;
         amount = d;
+        workCost = 0;
     }
     public String getName(){
         return name;
@@ -19,12 +20,19 @@ public class Workstation {
     public int getTotalPps(){
         return amount*pps;
     }
-
+    public int getAmount(){return amount;}
     public int getCost(){
+      /*  if(workCost != cost){
+            workCost = cost;
+      for(int i = 0; i<Data.listOfWorkstations.get(index).getAmount();i++){
+         // setCost();
+          workCost = ((workCost*10)+workCost*2)/10;
+      }
+      this.cost = workCost;}*/
         return cost;
     }
-    public void setCost(){
-        this.cost = ((cost*10)+cost*2)/10;
+    public void setCost(int num){
+        this.cost = ((cost*10)+cost*num)/10;
     }
 
 
@@ -37,4 +45,5 @@ public class Workstation {
     private int pps;
     private int amount;
     private int totalPps;
+    private int workCost;
 }

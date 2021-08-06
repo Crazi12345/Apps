@@ -55,6 +55,38 @@ public class MainActivity extends AppCompatActivity {
             }
         },0,1000);
 
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Data.numOfPoints += Data.Work2.getTotalPps();
+
+            }
+        },0,1000);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Data.numOfPoints += Data.Work3.getTotalPps();
+
+            }
+        },0,1000);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Data.numOfPoints += Data.Work4.getTotalPps();
+
+            }
+        },0,1000);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Data.numOfPoints += Data.Work5.getTotalPps();
+
+            }
+        },0,1000);
+
     }
 void UpdateText(){
     this.runOnUiThread(new Runnable() {
