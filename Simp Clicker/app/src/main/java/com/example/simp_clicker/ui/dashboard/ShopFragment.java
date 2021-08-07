@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.simp_clicker.R;
 import com.example.simp_clicker.databinding.FragmentDashboardBinding;
 import com.example.simp_clicker.ui.Data;
+import com.example.simp_clicker.ui.Workstation;
 
 public class ShopFragment extends Fragment {
 
@@ -21,107 +22,39 @@ public class ShopFragment extends Fragment {
     private FragmentDashboardBinding binding;
 
     @SuppressLint("SetTextI18n")
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        shopViewModel =
-                new ViewModelProvider(this).get(ShopViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-
         // Workstations Buttons put them below here:
-        Button Work1But = (Button)root.findViewById(R.id.Work1_id);
-        Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
-        Work1But.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work1.getCost())  // Check if there are enough points
-                {
+        setupButtonWorkButtons(root, R.id.Work1_id, Data.Work1);
+        setupButtonWorkButtons(root, R.id.Work2_id, Data.Work2);
+        setupButtonWorkButtons(root, R.id.Work3_id, Data.Work3);
+        setupButtonWorkButtons(root, R.id.Work4_id, Data.Work4);
+        setupButtonWorkButtons(root, R.id.Work5_id, Data.Work5);
 
-                    Data.numOfPoints -=Data.Work1.getCost();  // Removes the points used from the total
-                    Data.Work1.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
-                    Data.Work1.addAmount(1);
-                    Work1But.setText(Data.Work1.getName() + " Cost: " + Data.Work1.getCost());
-                    // Would it be smart to, instead of using set cost, just calculate the cost based on how many workstations of that type have already been purchased?
-                    // This way if there are other ways of acquiring workstations or if we want to add multipliers to cost later it would be much easier
-                    // note on this note
-                    // I have been trying to implement this feature, but keep running into bugs, so if you find a suitable solution, please implement it
-                }
-
-            }
-        });
-        Button Work2But = (Button)root.findViewById(R.id.Work2_id);
-        Work2But.setText(Data.Work2.getName() + " Cost: " + Data.Work2.getCost());
-        Work2But.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work2.getCost())  // Check if there are enough points
-                {
-
-                    Data.numOfPoints -=Data.Work2.getCost();  // Removes the points used from the total
-                    Data.Work2.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
-                    Data.Work2.addAmount(1);
-                    Work2But.setText(Data.Work2.getName() + " Cost: " + Data.Work2.getCost());
-                     }
-
-            }
-        });
-        Button Work3But = (Button)root.findViewById(R.id.Work3_id);
-        Work3But.setText(Data.Work3.getName() + " Cost: " + Data.Work3.getCost());
-        Work3But.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work3.getCost())  // Check if there are enough points
-                {
-
-                    Data.numOfPoints -=Data.Work3.getCost();  // Removes the points used from the total
-                    Data.Work3.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
-                    Data.Work3.addAmount(1);
-                    Work3But.setText(Data.Work3.getName() + " Cost: " + Data.Work3.getCost());
-                     }
-
-            }
-        });
-        Button Work4But = (Button)root.findViewById(R.id.Work4_id);
-        Work4But.setText(Data.Work4.getName() + " Cost: " + Data.Work4.getCost());
-        Work4But.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work4.getCost())  // Check if there are enough points
-                {
-
-                    Data.numOfPoints -=Data.Work4.getCost();  // Removes the points used from the total
-                    Data.Work4.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
-                    Data.Work4.addAmount(1);
-                    Work4But.setText(Data.Work4.getName() + " Cost: " + Data.Work4.getCost());
-                          }
-
-            }
-        });
-        Button Work5But = (Button)root.findViewById(R.id.Work5_id);
-        Work5But.setText(Data.Work5.getName() + " Cost: " + Data.Work5.getCost());
-        Work5But.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                if(Data.numOfPoints>=Data.Work5.getCost())  // Check if there are enough points
-                {
-
-                    Data.numOfPoints -=Data.Work5.getCost();  // Removes the points used from the total
-                    Data.Work5.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
-                    Data.Work5.addAmount(1);
-                    Work5But.setText(Data.Work5.getName() + " Cost: " + Data.Work5.getCost());
-                }
-
-            }
-        });
         return root;
+    }
+
+    private void setupButtonWorkButtons(View root, int WorkId, Workstation work){
+        Button WorkButton = (Button)root.findViewById(WorkId);
+        WorkButton.setText(work.getName() + " Cost: " + work.getCost());
+        WorkButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if(Data.numOfPoints>=work.getCost())  // Check if there are enough points
+                {
+
+                    Data.numOfPoints -=work.getCost();  // Removes the points used from the total
+                    work.setCost(2);                     // Adds 20% to the cost, other numbers from 1-10 works as well
+                    work.addAmount(1);
+                    WorkButton.setText(work.getName() + " Cost: " + work.getCost());
+                }
+            }
+        });
     }
 
     @Override

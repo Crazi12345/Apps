@@ -17,7 +17,7 @@ public class Data {
     public static Workstation Work5 = new Workstation("OnlyFuns Account", 5000, 100, 0);
 
     // Add all Workstations to this list of workstations and if you have a better solution then please change this, it hurts my eyes
-    public  static List<Workstation> listOfWorkstations = new ArrayList<Workstation>();
+    public static List<Workstation> listOfWorkstations = new ArrayList<Workstation>();
     public static void addStationToList(){
         listOfWorkstations.add(Work1);
         listOfWorkstations.add(Work2);
